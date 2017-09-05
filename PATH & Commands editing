@@ -1,0 +1,39 @@
+1. #PATH=$PATH:/etc/apache/bin
+使用这种方法,只对当前会话有效，也就是说每当登出或注销系统以后，PATH 设置就会失效
+
+2. #vi /etc/profile
+在适当位置添加 PATH=$PATH:/etc/apache/bin （注意：＝ 即等号两边不能有任何空格）
+这种方法最好,除非你手动强制修改PATH的值,否则将不会被改变
+
+注意：想改变PATH，必须重新登陆才能生效，以下方法可以简化工作：
+如果修改了/etc/profile，那么编辑结束后执行source profile(source /etc/profile) 或 执行点命令 
+
+--
+https://daniel1222.tian.yam.com/posts/11044777
+
+新增你的慣用指令~/.bashrc
+[root@linux ~]# vi ~/.bashrc
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+
+# User specific aliases and functions
+PATH="/bin:/sbin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin"
+PATH="$PATH":/usr/X11R6/bin:/home/dmtsai/bin
+LANG=zh_TW.big5
+LC_TIME=C
+export PATH LC_TIME LANG
+umask 022
+
+alias   rm='rm -i'
+alias   cp='cp -i'
+alias   mv='mv -i'
+alias   ll='ls -l'
+alias   lm='ls -al|more'
+alias   h='history'
+
+在linux介面如果常使用指令像是"ls -al"之類的指令，我們會把用習慣的指令改成"ll"或"lm"等等，就把常用的指令直接寫入~/.bashrc，每次開機就會自動載入你慣用的指令了。
+(轉貼於鳥哥的私房菜)

@@ -1,0 +1,10 @@
+https://docs.google.com/document/d/1--nfg1dZeykCQs0Nzo65MV_Vzxqgj5gPy08VfJ0p6ac/edit
+
+Translate C function to assembly code/machine code
+
+// c to mips32 assembly
+mips-mti-elf-gcc -S -O3 -std=c99 -fomit-frame-pointer list_append_v1.c
+              
+// c to mips binary (include: debug symbol and machine code)
+ mips-mti-elf-gcc  -O3 -g -std=c99 -fomit-frame-pointer -emain list_append_v1_1.c
+

@@ -1,0 +1,21 @@
+https://askubuntu.com/questions/24006/how-do-i-reset-a-lost-administrative-password
+
+Boot up the machine, and after the BIOS screen, hold down the left Shift key.
+
+Hit the down arrow until you select the 2nd entry from the top 
+(the one with the recovery mode in the description) and then hit Enter
+
+You should now see a root prompt, something like this:
+root@ubuntu:~#
+
+At this stage you should have a read-only filesystem. You have to remount it with write permissions:
+mount -o rw,remount /
+
+Now we can set the user's password with the passwd command. 
+(In this example I will use jorge as the example, you need to substitute whatever the user's username is):
+root@ubuntu:~# passwd jorge
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+root@ubuntu:~#
+
